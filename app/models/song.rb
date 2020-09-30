@@ -1,4 +1,4 @@
 class Song < ApplicationRecord
-    has_many :genres
+    belongs_to :genre
     belongs_to :artist
 end
