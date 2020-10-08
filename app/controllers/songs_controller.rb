@@ -1,17 +1,27 @@
 class SongsController < ApplicationController
-
+    
+    def index
+        @songs = Song.all
+    end
+    
+    
     def new
         @song = Song.new 
      end
  
      def create
          @song = Song.create(song_params)
-         redirect_to song_path(@song)
- 
+         if @song.save
+            redirect_to song_path(@song)
+         else
+            render :new
+         end
      end
 
     def show
         set_song
+        @artist = @song.artist
+        @genre = @song.genre
     end
 
     def edit
@@ -20,8 +30,11 @@ class SongsController < ApplicationController
 
     def update
         set_song
-        @song.update(song_params)
-        redirect_to song_path(@song)
+        if @song.update(song_params)
+          redirect_to song_path(@song)
+        else
+            render :edit
+        end
     end
 
     private
