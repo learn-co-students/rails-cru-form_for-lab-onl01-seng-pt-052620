@@ -19,9 +19,9 @@ class SongsController < ApplicationController
   end
 
   def update
+    @song = Song.find(params[:id])
     @song = Song.find(song_params)
     redirect_to song_path(@song)
-    binding.pry
   end
 
 private
