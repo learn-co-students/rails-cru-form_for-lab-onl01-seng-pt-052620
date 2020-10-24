@@ -21,6 +21,7 @@ class SongsController < ApplicationController
   def update
     @song = Song.find(song_params)
     redirect_to song_path(@song)
+    binding.pry
   end
 
 private
