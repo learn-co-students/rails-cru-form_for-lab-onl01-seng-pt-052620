@@ -1,0 +1,10 @@
+<h1> New Artist Form </h1>
+<%= form_for @artist do |a| %>
+<label> Artist Name </label>
+<%= a.text_field :name %>
+<label> Artist Name </label>
+<%= a.text_area :bio %>
+
+<%= a.submit "Create Artist" %>
+
+<% end %>
